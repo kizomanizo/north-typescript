@@ -1,25 +1,43 @@
 {
-  "name": "sacco-backend",
-  "version": "0.0.0",
-  "private": true,
+  "name": "thenorth-backend",
+  "version": "1.0.0",
+  "description": "A backend for The North credit society app.",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "test",
+    "start": "node index.js",
+    "start:dev": "npx prisma generate && npx prisma migrate dev --name compose && npx nodemon",
+    "generate": "npx prisma generate",
+    "migrate": "npx prisma migrate dev --name compose",
+    "debug": "nodemon --inspect=0.0.0.0:9229 index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kizomanizo/thenorth-backend.git"
+  },
+  "keywords": [
+    "thenorth",
+    "backend",
+    "docker"
+  ],
+  "author": "Kizito Mrema",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kizomanizo/thenorth-backend/issues"
+  },
+  "homepage": "https://github.com/kizomanizo/thenorth-backend#readme",
   "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "dotenv": "^8.2.0",
-    "express": "~4.16.1",
-    "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.20",
-    "mongoose": "^5.10.5",
-    "morgan": "~1.9.1",
-    "ms": "^2.1.2",
-    "winston": "^3.3.3"
+    "@prisma/client": "^4.14.1",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "winston": "^3.9.0"
   },
   "devDependencies": {
-    "mongoose-scaffold": "0.0.1",
-    "nodemon": "^2.0.5"
-  }
+    "nodemon": "^2.0.22",
+    "prisma": "^4.14.1"
+  },
+  "type": "module"
 }
