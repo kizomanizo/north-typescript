@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM node:18-alpine
+FROM node:20-alpine
 ENV NODE_ENV=development
 
 RUN mkdir -p /app
@@ -21,7 +21,7 @@ COPY . ./
 
 
 # Expose the port
-EXPOSE 4003
+EXPOSE 4005
 
 # Start the application in dev mode
 # CMD ["npm", "run", "start:dev"]

@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  database:
+  thenorth-database:
     image: mariadb:lts
-    container_name: database
+    container_name: thenorth-database
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     env_file: ./.env
@@ -18,10 +18,10 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
-  backend:
+  thenorth-backend:
     depends_on:
-      - database
-    container_name: backend
+      - thenorth-database
+    container_name: thenorth-backend
     build:
       context: .
     restart: unless-stopped
@@ -36,13 +36,18 @@ services:
     volumes:
       - ./:/app
       - /app/node_modules
+    expose:
+      - $NODE_DOCKER_PORT
+    command: npm run start
     stdin_open: true
     tty: true
     # command: ls -lah
 
-  adminer:
+  thenorth-adminer:
     image: adminer
-    container_name: adminer
+    container_name: thenorth-adminer
+    depends_on:
+      - thenorth-database
     ports:
       - 8080:8080
 

@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": [
+    "src/**/*.spec.ts"
+  ],
+  "watch": [
+    "src"
+  ],
+  "ext": "ts,json",
+  "exec": "npx ts-node src/index.ts"
+}
